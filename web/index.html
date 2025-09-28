@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <title>JWT авторизація (user/admin)</title>
+  <meta name="viewport" content="width=1280, initial-scale=1" />
+  <link href="./style.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="container">
+    <header class="header">
+      <h1>JWT авторизація</h1>
+      <p class="subtitle">Ролі: user / admin</p>
+    </header>
+
+    <section id="auth-section">
+      <div class="grid">
+        <div class="card">
+          <h2>Реєстрація</h2>
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label for="reg-username">Username</label>
+              <input id="reg-username" name="username" autocomplete="username" required />
+              <small class="error" data-error-for="reg-username"></small>
+            </div>
+            <div class="field">
+              <label for="reg-password">Password</label>
+              <input id="reg-password" type="password" name="password" autocomplete="new-password" required />
+              <small class="error" data-error-for="reg-password"></small>
+            </div>
+            <button type="submit" class="btn primary">Зареєструватися</button>
+            <small class="form-error" data-form-error="register"></small>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Логін</h2>
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="login-username">Username</label>
+              <input id="login-username" name="username" autocomplete="username" required />
+              <small class="error" data-error-for="login-username"></small>
+            </div>
+            <div class="field">
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" name="password" autocomplete="current-password" required />
+              <small class="error" data-error-for="login-password"></small>
+            </div>
+            <button type="submit" class="btn primary">Увійти</button>
+            <small class="form-error" data-form-error="login"></small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="me-section" class="hidden">
+      <div class="card">
+        <div class="row-between">
+          <h2>Мій профіль</h2>
+          <button id="logout-btn" class="btn danger">Вийти</button>
+        </div>
+        <pre id="me-json" class="pre"></pre>
+      </div>
+
+      <div id="admin-panel" class="card hidden">
+        <div class="row-between">
+          <h2>Адмін: список користувачів</h2>
+        </div>
+        <div class="row-between">
+          <button id="load-users-btn" class="btn">Завантажити користувачів</button>
+        </div>
+        <div class="table-wrap">
+          <table id="users-table" class="table">
+            <thead>
+              <tr><th>#</th><th>Username</th><th>Role</th><th>Created</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
